@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body{
+        font-family: 'Overpass', sans-serif;
+    }
+</style>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="min-w-screen min-h-screen flex justify-center items-center	 bg-[#141519]">
+    <div id="pan1" class="  rounded-2xl p-4  shadow shadow-slate-800 w-96 bg-gradient-to-b text-white from-gray-800 to-gray-900">
+        <div> 
+            <img src="reto1/icon-star.svg" class=" bg-slate-700 p-3  rounded-full ">
+        </div>
+        <div class="text-2xl my-2 font-bold">How did we do?</div>
+        <div class="text-slate-400">Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering! </div>
+        <div id="opciones" class=" flex justify-between my-3 text-slate-400">
+            <div  class="rounded-full   bg-slate-800 p-6 w-5 h-5 flex items-center justify-center hover:bg-[#fb7413] cursor-pointer hover:text-white">1</div>
+            <div  class="rounded-full   bg-slate-800 p-6 w-5 h-5 flex items-center justify-center hover:bg-[#fb7413] cursor-pointer hover:text-white">2</div>
+            <div  class="rounded-full   bg-slate-800 p-6 w-5 h-5 flex items-center justify-center hover:bg-[#fb7413] cursor-pointer hover:text-white">3</div>
+            <div  class="rounded-full   bg-slate-800 p-6 w-5 h-5 flex items-center justify-center hover:bg-[#fb7413] cursor-pointer hover:text-white">4</div>
+            <div  class="rounded-full   bg-slate-800 p-6 w-5 h-5 flex items-center justify-center hover:bg-[#fb7413] cursor-pointer hover:text-white">5</div>
+        </div>
+        <div>
+            <button disabled onclick="verEleccion()" class="disabled:text-white disabled:bg-slate-400  bg-[#fb7413] p-2 w-full rounded-lg my-3 hover:bg-white hover:text-[#fb7413]">Submit</button>
+        </div>
+    </div>
+    <div id="pan2" class="hidden rounded-2xl p-4  shadow shadow-slate-800 w-96 bg-gradient-to-b text-white from-gray-800 to-gray-900">
+        <img src="reto1/illustration-thank-you.svg" class="mx-auto">
+        <div id="msg" class="bg-slate-800 py-2 px-5 text-sm text-[#fb7413]  rounded-3xl text-center mt-6 w-fit mx-auto" >
+            You selected 4 out of 5
+        </div>
+        <div class="text-center my-2 py-4 text-3xl font-bold">
+            Thank you!
+        </div>
+        <div class="text-slate-400 text-center">
+            We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!
+        </div>
+    </div>
+</div>
+<script>
+    let numero=0
+    let opciones=document.getElementById("opciones");
+    opciones.addEventListener('click',(e)=>{
+        if (e.target.id!='opciones'){
+            numero=e.target.innerText
+            let botones=e.target.parentElement.children
+            for (let element of botones){
+                element.classList.remove('bg-slate-500')
+            }
+            e.target.classList.add('bg-slate-500')
+            let boton = document.getElementsByTagName('button')
+            boton[0].disabled=false
+        }
+    })
+    function selectNumero(num,event){
+        numero=num
+        event.target.classList.add('bg-slate-600')
+    }
+function verEleccion(){
+    document.getElementById('msg').innerText='You selected '+ numero +' out of 5'
+    document.getElementById('pan1').classList.add('hidden')
+    document.getElementById('pan2').classList.remove('hidden')
+}
+</script>
+</body>
+</html>
